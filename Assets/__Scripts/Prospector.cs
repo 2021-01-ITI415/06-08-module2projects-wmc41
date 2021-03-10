@@ -78,6 +78,7 @@ public class Prospector : MonoBehaviour
 			// ^ Create an empty GameObject named _LayoutAnchor in the Hierarchy
 			layoutAnchor = tGO.transform; // Grab its Transform
 			layoutAnchor.transform.position = layoutCenter; // Position it
+
 		}
 
 		CardProspector cp;
@@ -118,14 +119,14 @@ public class Prospector : MonoBehaviour
 
 	// Moves the current target to the discardPile
 	void MoveToDiscard(CardProspector cd)
-    {
+	{
 		// Set the state of the card to discard
 		cd.state = eCardState.discard;
 		discardPile.Add(cd); // Add it to the discardPile List<>
 		cd.transform.parent = layoutAnchor; // Update its transform parent
 
 		// Position this card on the discardPile
-		cd.transform.localPosition = new Vector3(layout.multiplier.x * layout.discardPile.x, 
+		cd.transform.localPosition = new Vector3(layout.multiplier.x * layout.discardPile.x,
 			layout.multiplier.y * layout.discardPile.y, -layout.discardPile.layerID + 0.5f);
 
 		cd.faceUp = true;
@@ -136,7 +137,7 @@ public class Prospector : MonoBehaviour
 
 	// Make cd the new target card
 	void MoveToTarget(CardProspector cd)
-    {
+	{
 		// If there is currently a target card, move it to discardPile
 		if (target != null) MoveToDiscard(target);
 		target = cd; // cd is the new target
@@ -150,7 +151,7 @@ public class Prospector : MonoBehaviour
 		-layout.discardPile.layerID);
 
 		cd.faceUp = true; // Make it face-up
-		// Set the depth sorting
+						  // Set the depth sorting
 		cd.SetSortingLayerName(layout.discardPile.layerName);
 		cd.SetSortOrder(0);
 	}
@@ -188,16 +189,7 @@ public class Prospector : MonoBehaviour
         {
 			// Clicking a card in the tableau will check if it's a valid play
 			case eCardState.target:
-			bool validMatch = true;
-			if (!cd.faceUp)
-                {
-					validMatch = false;
-				}
-			if (!AdjacentRank(cd, target))
-                {
-					validMatch = false;
-				}
-			if (!validMatch) return;
+			break;
 
 			tableau.Remove(cd); // Remove it from the tableau List
 			MoveToTarget(cd); // Make it the target card
@@ -211,7 +203,19 @@ public class Prospector : MonoBehaviour
 			break;
 
 			case eCardState.tableau:
-			// Clicking a card in the tableau will check if it's a valid play
+			bool validMatch = true;
+			if (!cd.faceUp)
+			{
+				validMatch = false;
+			}
+			if (!AdjacentRank(cd, target))
+			{
+				validMatch = false;
+			}
+			if (!validMatch) return;
+
+			tableau.Remove(cd); // Remove it from the tableau List
+			MoveToTarget(cd); // Make it the target card
 			break;
 		}
 
