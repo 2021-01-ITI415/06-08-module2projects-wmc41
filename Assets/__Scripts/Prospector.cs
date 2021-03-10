@@ -186,8 +186,21 @@ public class Prospector : MonoBehaviour
 		// The reaction is determined by the state of the clicked card
 		switch (cd.state)
         {
+			// Clicking a card in the tableau will check if it's a valid play
 			case eCardState.target:
-			// Clicking the target card does nothing
+			bool validMatch = true;
+			if (!cd.faceUp)
+                {
+					validMatch = false;
+				}
+			if (!AdjacentRank(cd, target))
+                {
+					validMatch = false;
+				}
+			if (!validMatch) return;
+
+			tableau.Remove(cd); // Remove it from the tableau List
+			MoveToTarget(cd); // Make it the target card
 			break;
 
 			case eCardState.drawpile:
@@ -202,5 +215,20 @@ public class Prospector : MonoBehaviour
 			break;
 		}
 
+	}
+
+	public bool AdjacentRank(CardProspector c0, CardProspector c1)
+    {
+		// If either card is face-down, it's not adjacent.
+		if (!c0.faceUp || !c1.faceUp) return (false);// If they are 1 apart, they are adjacent
+		if (Mathf.Abs(c0.rank - c1.rank) == 1)
+        {
+			return (true);
+        }
+
+		// If one is Ace and the other King, they are adjacent
+		if (c0.rank == 1 && c1.rank == 13) return (true);
+		if (c0.rank == 13 && c1.rank == 1) return (true);
+		return (false);
 	}
 }
