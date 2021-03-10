@@ -78,7 +78,6 @@ public class Prospector : MonoBehaviour
 			// ^ Create an empty GameObject named _LayoutAnchor in the Hierarchy
 			layoutAnchor = tGO.transform; // Grab its Transform
 			layoutAnchor.transform.position = layoutCenter; // Position it
-
 		}
 
 		CardProspector cp;
@@ -262,7 +261,47 @@ public class Prospector : MonoBehaviour
 			SetTableauFaces(); // Update tableau card face-ups
 			break;
 		}
+		CheckForGameOver();
+	}
 
+	void CheckForGameOver ()
+    {
+		// If the tableau is empty, the game is over
+		if (tableau.Count == 0)
+        {
+			GameOver(true);
+			return;
+		}
+		// If there are still cards in the draw pile, the game's not over
+		if (drawPile.Count > 0)
+		{
+			return;
+		}
+		// Check for remaining valid plays
+		foreach (CardProspector cd in tableau)
+        {
+			// If there is a valid play, the game's not over
+			if (AdjacentRank(cd, target))
+            {
+				return;
+			}
+		}
+		// Since there are no valid plays, the game is over
+		GameOver (false);
+	}
+
+	// Called when the game is over. Simple for now, but expandable
+	void GameOver(bool won)
+    {
+		if (won)
+        {
+			print("You Won! :)");
+        } else
+        {
+			print("Game Over. You Lost! :(");
+        }
+		// Reload the scene, resetting the game
+		SceneManager.LoadScene("__Prospector_Scene_0");
 	}
 
 	public bool AdjacentRank(CardProspector c0, CardProspector c1)
