@@ -111,10 +111,53 @@ public class Prospector : MonoBehaviour
 			tableau.Add(cp); // Add this CardProspector to the List<> tableau
 		}
 
+		foreach(CardProspector tCP in tableau)
+        {
+			foreach (int hid in tCP.slotDef.hiddenBy)
+            {
+				cp = FindCardByLayoutID(hid);
+				tCP.hiddenBy.Add(cp);
+			}
+		}
 		// Set up the initial target card
 		MoveToTarget(Draw());
 		// Set up the Draw pile
 		UpdateDrawPile();
+	}
+
+	// Convert from the layoutID int to the CardProspector with that ID
+	CardProspector FindCardByLayoutID(int layoutID)
+    {
+		// Search through all cards in the tableau List<>
+		foreach (CardProspector tCP in tableau)
+        {
+			if (tCP.layoutID == layoutID)
+            {
+				// If the card has the same ID, return it
+				return (tCP);
+			}
+
+		}
+		return (null);
+	}
+
+	void SetTableauFaces()
+    {
+		foreach (CardProspector cd in tableau)
+        {
+			bool faceUp = true; // Assume the card will be face-up
+			foreach (CardProspector cover in cd.hiddenBy)
+            {
+				// If either of the covering cards are in the tableau
+				if (cover.state == eCardState.tableau)
+                {
+					faceUp = false; 
+                }
+
+			}
+			cd.faceUp = faceUp;
+		}
+
 	}
 
 	// Moves the current target to the discardPile
@@ -216,6 +259,7 @@ public class Prospector : MonoBehaviour
 
 			tableau.Remove(cd); // Remove it from the tableau List
 			MoveToTarget(cd); // Make it the target card
+			SetTableauFaces(); // Update tableau card face-ups
 			break;
 		}
 
