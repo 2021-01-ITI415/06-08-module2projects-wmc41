@@ -51,7 +51,7 @@ public class ScoreManager : MonoBehaviour
         {
             S.Event(evt);
         } catch (System .NullReferenceException nre) {
-            Debug.LogError "ScoreManager:EVENT() called while S=null. \n" + nre );
+            Debug.LogError ("ScoreManager:EVENT() called while S=null. \n" + nre );
         }
     }
 
