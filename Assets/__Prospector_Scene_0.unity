@@ -215,7 +215,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
+  m_BackGroundColor: {r: 0.735849, g: 0.52902615, b: 0.03123886, a: 0.019607844}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -363,8 +363,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a5234f133740443bc9a67b6f2e7aa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chain: 0
-  scoreRun: 0
   score: 0
 --- !u!1 &1178533398
 GameObject:

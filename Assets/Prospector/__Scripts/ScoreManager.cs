@@ -19,8 +19,6 @@ public class ScoreManager : MonoBehaviour
     static public int HIGH_SCORE = 0;
     [Header("Set Dynamically")]
     // Fields to track score info
-    public int chain = 0;
-    public int scoreRun = 0;
     public int score = 0;
     void Awake()
     {
@@ -63,12 +61,10 @@ public class ScoreManager : MonoBehaviour
             case eScoreEvent.draw: // Drawing a card
             case eScoreEvent.gameWin: // Won the round
             case eScoreEvent.gameLoss: // Lost the round
-            chain = 0; // resets the score chainscore += scoreRun; // add scoreRun to total score
-            scoreRun = 0; // reset scoreRun
+            score = 0; // reset scoreRun
             break;
             case eScoreEvent.mine: // Remove a mine card
-            chain++; // increase the score chain
-            scoreRun += chain; // add score for this card to run
+            score = score +1; // increase the score 
             break;
         }
         switch (evt)
@@ -91,11 +87,10 @@ public class ScoreManager : MonoBehaviour
                 break;
 
             default:
-                print("score: " + score + " scoreRun:" + scoreRun + " chain:" + chain);
+                print("score: " + score );
                 break;
         }
     }
 
-    static public int CHAIN { get { return S.chain; } }
-    static public int SCORE { get { return S.score; } }    static public int SCORE_RUN { get { return S.scoreRun; } }
+    static public int SCORE { get { return S.score; } }
 }

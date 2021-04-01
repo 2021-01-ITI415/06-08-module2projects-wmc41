@@ -157,7 +157,7 @@ public class Prospector : MonoBehaviour
 				// If either of the covering cards are in the tableau
 				if (cover.state == eCardState.tableau)
                 {
-					faceUp = false; 
+					faceUp = true; 
                 }
 
 			}
@@ -297,6 +297,10 @@ public class Prospector : MonoBehaviour
 				return;
 			}
 		}
+		if (drawPile.Count < 0)
+		{
+			GameOver(true);
+		}
 		// Since there are no valid plays, the game is over
 		GameOver (false);
 	}
@@ -319,6 +323,12 @@ public class Prospector : MonoBehaviour
 		//SceneManager.LoadScene("__Prospector_Scene_0"); -- not needed 
 		Invoke("ReloadLevel", reloadDelay);
 	}
+
+	//Remove points for cards still in Tableau 
+	void ScoreAdjust()
+    {
+		
+    }
 
 	void ReloadLevel()
     {
@@ -379,7 +389,7 @@ public class Prospector : MonoBehaviour
 			fsPts.Add(p0);
 			fsPts.Add(fsPosMid);
 			fsPts.Add(fsPosRun);
-			fs = Scoreboard.S.CreateFloatingScore(ScoreManager.CHAIN, fsPts);
+			fs = Scoreboard.S.CreateFloatingScore(ScoreManager.SCORE, fsPts);
 			fs.fontSizes = new List<float>(new float[] { 4, 50, 28 });
 
 			if (fsRun == null)
