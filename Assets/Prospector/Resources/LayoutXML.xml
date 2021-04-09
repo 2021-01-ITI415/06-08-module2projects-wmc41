@@ -12,40 +12,40 @@
 	<!-- hiddenby="n" is the ids of cards that keep a card face-down -->
 
 	<!-- Layer0, the deepest cards. -->
-	<slot id="0" x="-1.5" y="120" faceup="1" layer="0"  />
-	<slot id="1" x="-1"  y="120" faceup="1" layer="0" />
-	<slot id="2" x="-.5"  y="120" faceup="1" layer="0"  />
-	<slot id="3" x="0" y="120" faceup="1" layer="0" />
-	<slot id="4" x=".5" y="120" faceup="1" layer="0" />
-	<slot id="5" x="1" y="120" faceup="1" layer="0" />
-	<slot id="6" x="1.5"  y="120" faceup="1" layer="0" />
+	<slot id="0" x="-1.5" y="120" faceup="0" layer="0"  />
+	<slot id="1" x="-1"  y="120" faceup="0" layer="0" />
+	<slot id="2" x="-.5"  y="120" faceup="0" layer="0"  />
+	<slot id="3" x="0" y="120" faceup="0" layer="0" />
+	<slot id="4" x=".5" y="120" faceup="0" layer="0" />
+	<slot id="5" x="1" y="120" faceup="0" layer="0" />
+	<slot id="6" x="1.5"  y="120" faceup="0" layer="0" />
 
 	<!-- Layer1, the next level. -->
-	<slot id="7" x="-1.5"  y="60" faceup="1" layer="1"  />
-	<slot id="8" x="-1"  y="60" faceup="1" layer="1"  />
-	<slot id="9"  x="-.5" y="60" faceup="1" layer="1"  />
-	<slot id="10" x="0" y="60" faceup="1" layer="2"  />
-	<slot id="11" x=".5" y="60" faceup="1" layer="2"  />
-	<slot id="12" x="1" y="60" faceup="1" layer="2"  />
-	<slot id="13" x="1.5"  y="60" faceup="1" layer="2" />
+	<slot id="7" x="-1.5"  y="60" faceup="0" layer="1"  />
+	<slot id="8" x="-1"  y="60" faceup="0" layer="1"  />
+	<slot id="9"  x="-.5" y="60" faceup="0" layer="1"  />
+	<slot id="10" x="0" y="60" faceup="0" layer="1"  />
+	<slot id="11" x=".5" y="60" faceup="0" layer="1"  />
+	<slot id="12" x="1" y="60" faceup="0" layer="1"  />
+	<slot id="13" x="1.5"  y="60" faceup="0" layer="1" />
 
 	<!-- Layer2, the next level. -->
-	<slot id="14" x="-1.5"  y="0" faceup="1" layer="2"  />
-	<slot id="15" x="-1"  y="0" faceup="1" layer="2"  />
-	<slot id="16" x="-.5"  y="0" faceup="1" layer="2"  />
-	<slot id="17" x="0"  y="0" faceup="1" layer="2"  />
-	<slot id="18" x=".5" y="0" faceup="1" layer="3" />
-	<slot id="19" x="1" y="0" faceup="1" layer="3" />
-	<slot id="20" x="1.5" y="0" faceup="1" layer="3"/>
+	<slot id="14" x="-1.5"  y="0" faceup="0" layer="2"  />
+	<slot id="15" x="-1"  y="0" faceup="0" layer="2"  />
+	<slot id="16" x="-.5"  y="0" faceup="0" layer="2"  />
+	<slot id="17" x="0"  y="0" faceup="0" layer="2"  />
+	<slot id="18" x=".5" y="0" faceup="0" layer="2" />
+	<slot id="19" x="1" y="0" faceup="0" layer="2" />
+	<slot id="20" x="1.5" y="0" faceup="0" layer="2"/>
 
 	<!-- Layer3, the mid level. -->
-	<slot id="21" x="-1.5" y="-60" faceup="1" layer="3" />
-	<slot id="22" x="-1" y="-60" faceup="1" layer="3" />
-	<slot id="23" x="-.5"  y="-60" faceup="1" layer="3" />
-	<slot id="24" x="0"  y="-60" faceup="1" layer="3" />
-	<slot id="25" x=".5"  y="-60" faceup="1" layer="3" />
-	<slot id="26" x="1"  y="-60" faceup="1" layer="3" />
-	<slot id="27" x="1.5"  y="-60" faceup="1" layer="3" />
+	<slot id="21" x="-1.5" y="-60" faceup="0" layer="3" />
+	<slot id="22" x="-1" y="-60" faceup="0" layer="3" />
+	<slot id="23" x="-.5"  y="-60" faceup="0" layer="3" />
+	<slot id="24" x="0"  y="-60" faceup="0" layer="3" />
+	<slot id="25" x=".5"  y="-60" faceup="0" layer="3" />
+	<slot id="26" x="1"  y="-60" faceup="0" layer="3" />
+	<slot id="27" x="1.5"  y="-60" faceup="0" layer="3" />
 
 
 	<!-- Layer4, the top level. -->

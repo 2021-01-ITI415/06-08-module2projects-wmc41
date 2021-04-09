@@ -8,7 +8,8 @@ public enum eScoreEvent
     draw,
     mine,
     mineGold, gameWin,
-    gameLoss
+    gameLoss, 
+    mineLoss
 }
 
 public class ScoreManager : MonoBehaviour
@@ -84,6 +85,10 @@ public class ScoreManager : MonoBehaviour
                 {
                     print("Your final score for the game was: " + score);
                 }
+                break;
+
+            case eScoreEvent.mineLoss:
+                score = score - 1;
                 break;
 
             default:

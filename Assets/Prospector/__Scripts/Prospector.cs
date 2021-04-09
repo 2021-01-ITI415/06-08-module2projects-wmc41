@@ -157,11 +157,11 @@ public class Prospector : MonoBehaviour
 				// If either of the covering cards are in the tableau
 				if (cover.state == eCardState.tableau)
                 {
-					faceUp = true; 
+					faceUp = false; 
                 }
 
 			}
-			cd.faceUp = faceUp;
+			cd.faceUp = false;
 		}
 
 	}
@@ -310,11 +310,19 @@ public class Prospector : MonoBehaviour
     {
 		if (won)
         {
-			//print("You Won! :)");
+			//print("You've Won! :)");
+			foreach(CardProspector cd in tableau)
+            {
+				ScoreManager.EVENT(eScoreEvent.mineLoss);
+            }
 			ScoreManager.EVENT(eScoreEvent.gameWin);
 			FloatingScoreHandler(eScoreEvent.gameWin);
 		} else
         {
+			foreach (CardProspector cd in tableau)
+			{
+				ScoreManager.EVENT(eScoreEvent.mineLoss);
+			}
 			//print("Game Over. You Lost! :(");
 			ScoreManager.EVENT(eScoreEvent.gameLoss);
 			FloatingScoreHandler(eScoreEvent.gameLoss);
@@ -323,12 +331,6 @@ public class Prospector : MonoBehaviour
 		//SceneManager.LoadScene("__Prospector_Scene_0"); -- not needed 
 		Invoke("ReloadLevel", reloadDelay);
 	}
-
-	//Remove points for cards still in Tableau 
-	void ScoreAdjust()
-    {
-		
-    }
 
 	void ReloadLevel()
     {
